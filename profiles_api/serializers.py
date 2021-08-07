@@ -1,4 +1,4 @@
-from rest_framework import serializers
+from rest_framework import fields, serializers
 from profiles_api import models
 
 class UserProfileSerializers(serializers.ModelSerializer):
@@ -19,4 +19,11 @@ class UserProfileSerializers(serializers.ModelSerializer):
             password=validated_data['password'])
         return user
     
+class ProfileFeedItemSerializer(serializers.ModelSerializer):
+    """ Serializes A Feed Object."""
+    class Meta:
+        model = models.ProfileFeedItem
+        fields = ['id','user_profile','status_text','created_on']
+        
+        extra_kwargs = {'user_profile': {'read_only': True}}
     
