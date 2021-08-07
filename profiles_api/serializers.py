@@ -1,7 +1,6 @@
 from rest_framework import serializers
 from profiles_api import models
 
-
 class UserProfileSerializers(serializers.ModelSerializer):
     """ Serializes A User Profile Object. """
     class Meta:
@@ -18,5 +17,6 @@ class UserProfileSerializers(serializers.ModelSerializer):
             email=validated_data['email'],
             name=validated_data['name'],
             password=validated_data['password'])
-
         return user
+    
+    
