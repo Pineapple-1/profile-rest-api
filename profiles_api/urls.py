@@ -4,10 +4,10 @@ from rest_framework.routers import DefaultRouter
 """For ViewSets use Routers"""
 
 routers = DefaultRouter()
-routers.register('viewset',views.HeloViewSet,basename= 'viewset')
+routers.register('profile',views.UserProfileViewSet)
+
 
 urlpatterns = [
-    path('apiview/',views.HelloApiView.as_view()),
     path('',include(routers.urls))
 ]
 
