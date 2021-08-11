@@ -22,7 +22,7 @@ def get_profile(profile_id, token):
 
     return res.json()
 
-token = get_token('abdulrehman.ajmal@outlook.com', 'oreo@123')
+token = get_token('emial', 'password')
 profile = get_profile(1, token)
 print(profile)
 
