@@ -1,8 +1,10 @@
-import requests
+import requests 
 
 
-TOKEN_ENDPOINT = 'https://mydjangoapiapp.herokuapp.com/login/'
-PROFILE_ENDPOINT = 'https://mydjangoapiapp.herokuapp.com/profile/'
+TOKEN_ENDPOINT = 'http://localhost:8000/login/'
+PROFILE_ENDPOINT = 'http://localhost:8000/profile/'
+FEED_ENDPOINT = 'http://localhost:8000/feed/'
+
 
 def get_token(email, password):
     """Retrieve the token for logging in user"""
@@ -19,10 +21,14 @@ def get_profile(profile_id, token):
         'Content-Type': 'application/json',
         'Authorization': 'Token {}'.format(token)
     })
-
     return res.json()
 
-token = get_token('emial', 'password')
-profile = get_profile(1, token)
-print(profile)
+def get_feed():
+    res = requests.get(FEED_ENDPOINT)
+    return res.json()
+
+
+feed = get_feed()
+print(feed)
+
 

@@ -27,6 +27,9 @@ class UserProfileManager(BaseUserManager):
         user.save(using=self._db)
         return user
 
+    def __str__(self):
+        return self.name
+
 
 class UserProfile(AbstractBaseUser, PermissionsMixin):
     """ Data base models for user profiles"""
