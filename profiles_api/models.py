@@ -49,6 +49,16 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
 
     def __str__(self):
         return self.email
+
+    def create_user(self, email, name, password=None):
+        """Creating a user"""
+        if not email:
+            raise ValueError("user must have email")
+        email = self.normalize_email(email)
+        user = self.model(email=email, name=name)
+        user.set_password(password)
+        user.save(using=self._db)
+        return user
     
     
 class ProfileFeedItem(models.Model):
